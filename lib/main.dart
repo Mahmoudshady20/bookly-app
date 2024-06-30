@@ -1,3 +1,4 @@
+import 'package:bookly_app/features/book_details/book_details_view.dart';
 import 'package:bookly_app/features/home_feature/home_view.dart';
 import 'package:bookly_app/features/splash_feature/splash_view.dart';
 import 'package:bookly_app/shared/theme_data/theme_data.dart';
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       theme: MyThemeData.myTheme,
       routes: {
         SplashView.routeName :(context)=> const SplashView(),
-        HomeView.routeName : (context)=> const HomeView()
+        HomeView.routeName : (context)=> const HomeView(),
+        BookDetailsView.routeName : (context)=> const BookDetailsView(),
       },
     );
   }
