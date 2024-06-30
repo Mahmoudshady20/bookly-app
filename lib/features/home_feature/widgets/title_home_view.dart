@@ -16,7 +16,7 @@ class TitleHomeView extends StatelessWidget {
           ),
           Text(
             'Best Seller',
-            style: GoogleFonts.montserrat(textStyle:  Theme.of(context).textTheme.titleMedium),
+            style: GoogleFonts.montserrat(textStyle: Theme.of(context).textTheme.titleMedium),
           )
         ],
       ),
