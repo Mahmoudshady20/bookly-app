@@ -1,5 +1,5 @@
 import 'package:bookly_app/core/utils/assets_data.dart';
-import 'package:bookly_app/features/home_feature/widgets/list_view_item.dart';
+import 'package:bookly_app/shared/widgets/custom_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomHomeListView extends StatelessWidget {
@@ -8,9 +8,13 @@ class CustomHomeListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height *.27,
+      height: MediaQuery.of(context).size.height * .27,
       child: ListView.builder(
-          itemBuilder:(context, index) =>  CustomListViewItem(imagePath: AssetsData.imagesPath[index]),
+        itemBuilder: (context, index) => CustomImage(
+          imagePath: AssetsData.imagesPath[index],
+          padding: 8,
+          height: MediaQuery.of(context).size.height * .27,
+        ),
         itemCount: AssetsData.imagesPath.length,
         scrollDirection: Axis.horizontal,
       ),
