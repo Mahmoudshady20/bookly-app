@@ -1,5 +1,5 @@
 import 'package:bookly_app/core/utils/assets_data.dart';
-import 'package:bookly_app/features/home_feature/widgets/best_seller_list_view_item.dart';
+import 'package:bookly_app/features/home_feature/presentation/widgets/best_seller_list_view_item.dart';
 import 'package:flutter/material.dart';
 
 class CustomBestSellerListView extends StatelessWidget {

@@ -14,6 +14,7 @@ class CustomHomeListView extends StatelessWidget {
           imagePath: AssetsData.imagesPath[index],
           padding: 8,
           height: MediaQuery.of(context).size.height * .27,
+          raduis: 22,
         ),
         itemCount: AssetsData.imagesPath.length,
         scrollDirection: Axis.horizontal,
