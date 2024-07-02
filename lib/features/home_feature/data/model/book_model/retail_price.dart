@@ -1,6 +1,3 @@
-/// amountInMicros : 688510000
-/// currencyCode : "EGP"
-
 class RetailPrice {
   RetailPrice({
       this.amountInMicros, 

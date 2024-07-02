@@ -1,15 +1,6 @@
 import 'package:bookly_app/features/home_feature/data/model/book_model/list_price.dart';
-
 import 'retail_price.dart';
 import 'offers.dart';
-
-/// country : "EG"
-/// saleability : "FOR_SALE"
-/// isEbook : true
-/// listPrice : {"amount":688.51,"currencyCode":"EGP"}
-/// retailPrice : {"amount":688.51,"currencyCode":"EGP"}
-/// buyLink : "https://play.google.com/store/books/details?id=s-IH_x6ytuQC&rdid=book-s-IH_x6ytuQC&rdot=1&source=gbs_api"
-/// offers : [{"finskyOfferType":1,"listPrice":{"amountInMicros":688510000,"currencyCode":"EGP"},"retailPrice":{"amountInMicros":688510000,"currencyCode":"EGP"}}]
 
 class SaleInfo {
   SaleInfo({

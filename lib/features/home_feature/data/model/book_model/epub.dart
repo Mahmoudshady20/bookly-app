@@ -1,5 +1,3 @@
-/// isAvailable : false
-
 class Epub {
   Epub({
       this.isAvailable,});

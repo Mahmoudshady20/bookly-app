@@ -1,8 +1,8 @@
-import 'package:bookly_app/features/home_feature/data/model/book_model/VolumeInfo.dart';
+import 'package:bookly_app/features/home_feature/data/model/book_model/volume_info.dart';
 
-import 'SaleInfo.dart';
+import 'sale_info.dart';
 import 'access_info.dart';
-import 'SearchInfo.dart';
+import 'search_info.dart';
 
 /// kind : "books#volume"
 /// id : "s-IH_x6ytuQC"

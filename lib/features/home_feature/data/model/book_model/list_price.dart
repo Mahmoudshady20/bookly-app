@@ -1,5 +1,4 @@
-/// amountInMicros : 688510000
-/// currencyCode : "EGP"
+
 
 class ListPrice {
   ListPrice({
