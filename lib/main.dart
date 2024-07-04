@@ -1,29 +1,46 @@
-import 'package:bookly_app/features/book_details/book_details_view.dart';
-import 'package:bookly_app/features/home_feature/presentation/home_view.dart';
-import 'package:bookly_app/features/splash_feature/splash_view.dart';
-import 'package:bookly_app/shared/theme_data/theme_data.dart';
+import 'package:bookly_app/Features/home/data/repos/home_repo.dart';
+import 'package:bookly_app/Features/home/data/repos/home_repo_impl.dart';
+import 'package:bookly_app/Features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
+import 'package:bookly_app/Features/home/presentation/manger/newest_books_cubit/newset_books_cubit.dart';
+import 'package:bookly_app/constants.dart';
+import 'package:bookly_app/core/utils/app_router.dart';
+import 'package:bookly_app/core/utils/service_locator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(const MyApp());
+  setupServiceLocator();
+  runApp(const Bookly());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Bookly extends StatelessWidget {
+  const Bookly({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: SplashView.routeName,
-      theme: MyThemeData.myTheme,
-      routes: {
-        SplashView.routeName :(context)=> const SplashView(),
-        HomeView.routeName : (context)=> const HomeView(),
-        BookDetailsView.routeName : (context)=> const BookDetailsView(),
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => FeaturedBooksCubit(
+            getIt.get<HomeRepoImpl>(),
+          )..fetchFeaturedBooks(),
+        ),
+        BlocProvider(
+          create: (context) => NewsetBooksCubit(
+            getIt.get<HomeRepoImpl>() as HomeRepo,
+          )..fetchNewestBooks(),
+        )
+      ],
+      child: MaterialApp.router(
+        routerConfig: AppRouter.router,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: kPrimaryColor,
+          textTheme:
+              GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+        ),
+      ),
     );
   }
 }
-

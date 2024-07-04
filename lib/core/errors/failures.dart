@@ -1,22 +1,28 @@
 import 'package:dio/dio.dart';
 
-abstract class Failures{
-  final String errorMsg;
+abstract class Failure {
+  final String errMessage;
 
-  const Failures(this.errorMsg);
+  const Failure(this.errMessage);
 }
-class ServerFailure extends Failures {
-  ServerFailure(super.errorMsg);
+
+class ServerFailure extends Failure {
+  ServerFailure(super.errMessage);
+
   factory ServerFailure.fromDioError(DioException dioError) {
-    switch(dioError.type){
+    switch (dioError.type) {
       case DioExceptionType.connectionTimeout:
         return ServerFailure('Connection timeout with ApiServer');
+
       case DioExceptionType.sendTimeout:
         return ServerFailure('Send timeout with ApiServer');
+
       case DioExceptionType.receiveTimeout:
         return ServerFailure('Receive timeout with ApiServer');
+
+
       case DioExceptionType.cancel:
-        return ServerFailure('Request to ApiServer was canceld');
+        return ServerFailure('Request to ApiServer was canceled');
 
       case DioExceptionType.unknown:
         if (dioError.message!.contains('SocketException')) {
@@ -24,9 +30,10 @@ class ServerFailure extends Failures {
         }
         return ServerFailure('Unexpected Error, Please try again!');
       default:
-        return ServerFailure('Opps There was an Error, Please try again');
+        return ServerFailure('Ops There was an Error, Please try again');
     }
-    }
+  }
+
   factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       return ServerFailure(response['error']['message']);
@@ -35,7 +42,7 @@ class ServerFailure extends Failures {
     } else if (statusCode == 500) {
       return ServerFailure('Internal Server error, Please try later');
     } else {
-      return ServerFailure('Opps There was an Error, Please try again');
+      return ServerFailure('Ops There was an Error, Please try again');
     }
   }
 }
